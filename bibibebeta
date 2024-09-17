@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa para Gaby</title>
+    <style>
+        body {
+            background-color: #800020; /* Cor vinho borgonha */
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: none;
+            padding: 20px;
+        }
+
+        #start {
+            margin-top: 50vh;
+            transform: translateY(-50%);
+        }
+
+        button {
+            background-color: #fff;
+            color: #800020;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #f0f0f0;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .final-message {
+            font-size: 18px;
+        }
+
+        .cute-icons {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Primeira fase: Botão de início -->
+    <div id="start">
+        <button onclick="startSite()">Clique aqui</button>
+    </div>
+
+    <!-- Segunda fase: Formulário -->
+    <div id="form-phase" class="container">
+        <h2>Preciso saber se você é a pessoa certa que está vendo isso, preencha seus dados:</h2>
+        <input type="text" id="nome" placeholder="Nome"><br>
+        <input type="text" id="sobrenome" placeholder="Sobrenome"><br>
+        <input type="text" id="idade" placeholder="Idade"><br>
+        <input type="text" id="irmao" placeholder="Nome do irmão"><br>
+        <button onclick="checkAnswers()">Enviar</button>
+        <div id="error-message" class="hidden">Respostas incorretas! Tente novamente.</div>
+    </div>
+
+    <!-- Terceira fase: Mensagem de amor -->
+    <div id="love-message-phase" class="container">
+        <h2>Gaby, eu me recordo todos os dias de quando me dei conta que estava apaixonada por ti, vivo cada segundo no aguardo para te ver novamente.</h2>
+        <div class="cute-icons">💘💘💘</div>
+        <button onclick="showFinalMessage()">Clique aqui</button>
+    </div>
+
+    <!-- Quarta fase: Mensagem final -->
+    <div id="final-message-phase" class="container">
+        <div class="final-message">
+            Apaixonar-se, como aconteceu em outubro do ano passado, é mergulhar em um turbilhão de emoções, onde cada momento do teu lado parece mais intenso e vívido. Tudo começa com um arrepio leve, uma inquietação boa que cresce a cada sorriso, a cada olhar trocado. O tempo parece desacelerar quando tu está por perto, e ao mesmo tempo, há aquela urgência incontrolável de estar mais perto, de ouvir sua voz, de descobrir os detalhes de seu mundo, te amo muito Gaby.
+        </div>
+        <button onclick="showFunnyMessage()">Clique aqui</button>
+    </div>
+
+    <!-- Quinta fase: Mensagem engraçada -->
+    <div id="funny-message-phase" class="container">
+        <h2>Manda uma fototeta? 😜</h2>
+    </div>
+
+    <script>
+        function startSite() {
+            document.getElementById('start').style.display = 'none';
+            document.getElementById('form-phase').style.display = 'block';
+        }
+
+        function checkAnswers() {
+            const nome = document.getElementById('nome').value.toLowerCase();
+            const sobrenome = document.getElementById('sobrenome').value.toLowerCase();
+            const idade = document.getElementById('idade').value;
+            const irmao = document.getElementById('irmao').value.toLowerCase();
+
+            if (nome === 'gabrielly' && sobrenome === 'da silveira cezimbra' && idade === '16' && (irmao === 'arthur' || irmao === 'artur')) {
+                document.getElementById('form-phase').style.display = 'none';
+                document.getElementById('love-message-phase').style.display = 'block';
+            } else {
+                document.getElementById('error-message').classList.remove('hidden');
+            }
+        }
+
+        function showFinalMessage() {
+            document.getElementById('love-message-phase').style.display = 'none';
+            document.getElementById('final-message-phase').style.display = 'block';
+        }
+
+        function showFunnyMessage() {
+            document.getElementById('final-message-phase').style.display = 'none';
+            document.getElementById('funny-message-phase').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
